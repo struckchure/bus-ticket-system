@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = "*"
 ipython = "*"
+django-livereload-server = "*"
 
 [dev-packages]
 

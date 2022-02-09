@@ -1,5 +1,7 @@
 {
   "scripts": {
-    "dev": "npx tailwindcss -i ./static/css/tailwind.css -o ./static/css/style.css --watch"
+    "tailwind:build": "npx tailwindcss -i ./static/css/tailwind.css -o ./static/css/style.css",
+    "dev": "yarn tailwind:build -- --watch",
+    "build": "yarn tailwind:build -- --minify"
   }
 }
