@@ -1,0 +1,33 @@
+{% for form in form %}
+<div>
+  <label for="{{ form.id_for_label }}" class="block text-left text-white">
+    {{ form.label }}
+  </label>
+
+  {% if form.widget_type == "select" %}
+  <select name="{{ form.name }}" id="{{ form.id_for_label }}" class="p-2">
+    <option disabled>{{form.label}}</option>
+    {% for value, text in form.field.choices %}
+    <option value="{{ value }}">{{ text }}</option>
+    {% endfor %}
+  </select>
+  {% elif form.widget_type == "textarea" %}
+  <textarea
+    name="{{ form.name }}"
+    id="{{ form.id_for_label }}"
+    cols="30"
+    rows="10"
+    class="p-2"
+  ></textarea>
+  {% elif form.widget_type == "clearablefile" %}
+  <input type="file" name="{{ form.name }}" id="{{ form.id_for_label }}" />
+  {% else %}
+  <input
+    class="p-2"
+    id="{{ form.id_for_label }}"
+    type="{{ form.widget_type }}"
+    name="{{ form.name }}"
+  />
+  {% endif %}
+</div>
+{% endfor %}

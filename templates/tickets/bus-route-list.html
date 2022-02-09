@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for bus_route in bus_route_list %}
+<a href="{% url 'tickets:bus-route-details' bus_route.id %}">
+    {{ bus_route.name }}
+</a>
+
+<a href="{% url 'tickets:bus-route-delete' bus_route.id %}">
+    <button>
+        delete
+    </button>
+</a>
+{% endfor %}
+{% endblock content %}

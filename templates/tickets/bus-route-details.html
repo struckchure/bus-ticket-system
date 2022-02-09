@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Bus Route | {{ bus_route.name }}
+{% endblock title %}
+
+{% block content %}
+<div>
+    <p>Bus Route: {{ bus_route.name }}</p>
+    <p>From: {{ bus_route.arrival.name }}</p>
+    <p>To: {{ bus_route.departure.name }}</p>
+</div>
+{% endblock content %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content %}
+<form method="post">
+  {% csrf_token %}
+
+  {% with form=bus_route_create_form %}
+  {% include 'components/form-widget.html' %}
+  {% endwith %}
+  <button type="submit">Save</button>
+</form>
+{% endblock content %}

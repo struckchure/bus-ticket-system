@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Ticket | {{ ticket.route.name }}
+{% endblock title %}
+
+{% block content %}
+<div>
+    <p>Route : {{ ticket.route.name }}</p>
+    <p>Code : {{ ticket.code }}</p>
+    <p>Status : {{ ticket.status }}</p>
+</div>
+{% endblock content %}
