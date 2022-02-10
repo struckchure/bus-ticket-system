@@ -13,7 +13,7 @@ class BusRouteForm(forms.ModelForm):
 
     class Meta:
         model = BusRoute
-        fields = ["name", "arrival", "departure"]
+        fields = ["name", "arrival", "departure", "price"]
 
     def clean(self):
         cleaned_data = super().clean()

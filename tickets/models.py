@@ -33,6 +33,7 @@ class BusRoute(BaseModel):
     departure = models.ForeignKey(
         Destination, on_delete=models.CASCADE, related_name="departure"
     )
+    price = models.PositiveIntegerField(default=0)
 
     class Meta:
         verbose_name = "Bus route"
