@@ -1,0 +1,70 @@
+<div class="overflow-auto py-0 md:py-4">
+    <table class="table-auto h-fit w-fit mx-auto">
+        <thead class="text-xs font-semibold uppercase text-gray-100 bg-blue-400">
+            <tr>
+                <th class="p-2 whitespace-nowrap w-5">
+                    <div class="font-semibold text-left">
+                        #
+                    </div>
+                </th>
+                <th class="p-2 whitespace-nowrap">
+                    <div class="font-semibold text-left">
+                        Route
+                    </div>
+                </th>
+                <th class="p-2 whitespace-nowrap">
+                    <div class="font-semibold text-left">
+                        Departure
+                    </div>
+                </th>
+                <th class="p-2 whitespace-nowrap">
+                    <div class="font-semibold text-left">
+                        Arrival
+                    </div>
+                </th>
+
+                <th class="p-2 whitespace-nowrap">
+                    <div class="font-semibold text-left">
+                        Price (&#8358;)
+                    </div>
+                </th>
+
+                <th class="p-2 whitespace-nowrap w-5" colsan="2">
+                    <div class="font-semibold text-left">
+                        Actions
+                    </div>
+                </th>
+            </tr>
+        </thead>
+
+        <tbody class="text-sm divide-y divide-gray-100">
+            {% for bus_route in bus_route_list %}
+            <tr class="hover:bg-gray-200 cursor-pointer">
+                <td class="p-2 whitespace-nowrap w-fit">{{ forloop.counter }}</td>
+                <td class="p-2 whitespace-nowrap">{{ bus_route.name }}</td>
+                <td class="p-2 whitespace-nowrap">{{ bus_route.departure.name }}</td>
+                <td class="p-2 whitespace-nowrap">{{ bus_route.arrival.name }}</td>
+                <td class="p-2 whitespace-nowrap">
+                    {% if bus_route.price %}
+                    &#8358; {{ bus_route.price }}
+                    {% else %}
+                    Free
+                    {% endif %}
+                </td>
+                <td class="p-2 whitespace-nowrap" colspan="2">
+                    <a href="{% url 'tickets:bus-route-details' bus_route.id %}">
+                        <button class="bg-blue-600 text-white py-1 px-2 text-sm">
+                            View
+                        </button>
+                    </a>
+                    <a href="{% url 'tickets:bus-route-delete' bus_route.id %}">
+                        <button class="bg-red-600 text-white py-1 px-2 text-sm">
+                            Delete
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

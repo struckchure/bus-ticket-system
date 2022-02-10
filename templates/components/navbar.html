@@ -1,0 +1,35 @@
+{% load static %}
+
+<nav class="flex justify-between items-center bg-gradient-to-r from-[#00A3FF] to-[#4285F4] px-10 py-2">
+    <a href="/">
+        <img src="{% static 'img/logo-1.svg' %}" alt="Logo" class="object-contain w-fit h-fit">
+    </a>
+
+    <div class="flex items-center justify-around gap-2">
+        {% if user %}
+        <a href="#" title="{{ user.username }}">
+            <button>
+                <i class="icon user circle large text-white"></i>
+            </button>
+        </a>
+
+        <a href="{% url 'accounts:logout' %}">
+            <button>
+                <i class="icon logout text-white"></i>
+            </button>
+        </a>
+        {% else %}
+        <a href="{% url 'accounts:login' %}">
+            <button class="border-2 border-solid border-white py-2 px-4 text-white rounded-md">
+                Login
+            </button>
+        </a>
+
+        <a href="{% url 'accounts:login' %}">
+            <button class="bg-white py-2 px-4 text-pink-600 rounded-md">
+                Register
+            </button>
+        </a>
+        {% endif %}
+    </div>
+</nav>

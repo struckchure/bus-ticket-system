@@ -1,6 +1,6 @@
 {% for form in form %}
-<div>
-  <label for="{{ form.id_for_label }}" class="block text-left text-white">
+<div class="py-2">
+  <label for="{{ form.id_for_label }}" class="block text-sm text-left text-[#829BA4]">
     {{ form.label }}
   </label>
 
@@ -12,22 +12,11 @@
     {% endfor %}
   </select>
   {% elif form.widget_type == "textarea" %}
-  <textarea
-    name="{{ form.name }}"
-    id="{{ form.id_for_label }}"
-    cols="30"
-    rows="10"
-    class="p-2"
-  ></textarea>
+  <textarea name="{{ form.name }}" id="{{ form.id_for_label }}" cols="30" rows="10" class="p-2"></textarea>
   {% elif form.widget_type == "clearablefile" %}
   <input type="file" name="{{ form.name }}" id="{{ form.id_for_label }}" />
   {% else %}
-  <input
-    class="p-2"
-    id="{{ form.id_for_label }}"
-    type="{{ form.widget_type }}"
-    name="{{ form.name }}"
-  />
+  <input class="p-2" id="{{ form.id_for_label }}" type="{{ form.widget_type }}" name="{{ form.name }}" />
   {% endif %}
 </div>
 {% endfor %}

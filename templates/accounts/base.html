@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+<div class="auth-layout">
+    <img src="{% static 'img/logo-1.svg' %}" alt="Logo" class="auth-logo">
+
+    <div class="auth-form">
+        {% block content %}{% endblock content %}
+    </div>
+
+    {% block footer %}
+
+    {% endblock footer %}
+</div>
+
+
+{% endblock body %}

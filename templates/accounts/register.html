@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'accounts/base.html' %}
 
 {% block title %}
 Register
@@ -8,10 +8,16 @@ Register
 <form method="post">
     {% csrf_token %}
 
-    {% with form=register_form %}
-    {% include "components/form-widget.html" %}
-    {% endwith %}
+    <div class="form-content">
+        {% with form=register_form %}
+        {% include "components/form-widget.html" %}
+        {% endwith %}
+    </div>
 
     <button type="submit">Register</button>
 </form>
 {% endblock content %}
+
+{% block footer %}
+<a href="{% url 'accounts:login' %}">Login here</a>
+{% endblock footer %}

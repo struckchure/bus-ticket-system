@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+@layer base {
+  main {
+    @apply h-screen w-full;
+  }
+
+  nav,
+  footer {
+    @apply bg-gray-800;
+  }
+
+  nav {
+    @apply shadow-lg;
+  }
+
+  /* transition */
+  * {
+    @apply transition-all duration-200;
+  }
+
+  button,
+  input {
+    @apply rounded-md p-2 disabled:cursor-not-allowed;
+  }
+
+  button {
+    @apply bg-gray-900 hover:bg-gray-800 text-gray-200
+    border-gray-700 border-solid border-[1px] rounded-full w-fit px-4;
+  }
+
+  button > i {
+    @apply block h-fit w-fit p-0 m-0;
+  }
+
+  a {
+    @apply text-gray-500 hover:underline;
+  }
+
+  input {
+    @apply bg-gray-900 focus:bg-gray-800 hover:bg-gray-800
+    rounded-full px-4 transition-all duration-200 
+    border-gray-700 border-solid border-[1px]
+    text-gray-400 text-sm placeholder:tracking-widest
+    focus:outline-none disabled:bg-gray-700
+    invalid:border-red-800;
+  }
+
+  input[type="checkbox"] {
+    @apply inline w-fit mx-2;
+  }
+}
+
+@layer components {
+  .form-group > input {
+    @apply my-2;
+  }
+
+  .form-group > label {
+    @apply block;
+  }
+}
+
+@layer utilities {
+  .grid-center {
+    @apply grid place-content-center place-items-center;
+  }
+}
+
+.animate-entry {
+  animation: fade_in_out 0.5s forwards;
+  @apply blur-sm static top-0 left-0 w-full h-screen;
+}
+
+@keyframes fade_in_out {
+  to {
+    @apply blur-0;
+  }
+}
+
+.progress-bar {
+  @apply w-0 h-full absolute top-0 left-0 bg-[rgba(0,0,0,0.25)];
+  animation: progress_bar 1s infinite 2s;
+}
+
+@keyframes progress_bar {
+  to {
+    @apply w-full;
+  }
+}

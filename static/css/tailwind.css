@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   @apply m-0 h-full w-full p-0;
@@ -5,5 +9,38 @@ body {
 }
 
 * {
-  @apply m-0 box-border border-0 p-0;
+  @apply m-0 box-border border-0 p-0 transition duration-200;
+}
+
+@layer base {
+  input {
+    @apply rounded-sm border-[1px] border-solid border-[#e2e2e2] p-2 text-[#829BA4];
+  }
+}
+
+/* accounts */
+
+.auth-layout {
+  @apply grid h-full w-full place-content-center place-items-center gap-2 bg-cover bg-no-repeat;
+  background-image: url("../img/cover.svg");
+}
+
+.auth-layout a {
+  @apply font-bold text-gray-100 underline;
+}
+
+.auth-logo {
+  @apply h-fit w-fit object-cover;
+}
+
+.auth-form {
+  @apply rounded-md bg-white;
+}
+
+.form-content {
+  @apply p-4;
+}
+
+.auth-form button[type="submit"] {
+  @apply w-full rounded-b-md bg-[#ff4062] py-2 text-center font-bold text-white hover:bg-[#ee4062];
 }
