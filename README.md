@@ -20,8 +20,18 @@ $ python manage.py runserver
 ```
 
 # Running the server with livereload
+
 ```sh
 $ python manage.py livereload
+```
+
+# Running tailwind dev server
+
+```sh
+# using yarn
+$ yarn dev
+# using npm
+$ npm run dev
 ```
 
 Ciao! :wink:
