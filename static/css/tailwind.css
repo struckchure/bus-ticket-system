@@ -16,6 +16,10 @@ body {
   input {
     @apply rounded-sm border-[1px] border-solid border-[#e2e2e2] p-2 text-[#829BA4];
   }
+
+  nav ul {
+    @apply flex items-center gap-2;
+  }
 }
 
 /* accounts */

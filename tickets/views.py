@@ -61,30 +61,14 @@ def ticket_list_view(request):
 
 
 @login_required
-def ticket_create_view(request):
-    if request.method == "POST":
-        ticket_create_form = TicketForm(request.POST)
+def ticket_create_view(request, bus_route_id):
+    bus_route = get_object_or_404(BusRoute, id=bus_route_id)
+    ticket = Ticket.objects.create(route=bus_route, user=request.user)
+    ticket.save()
 
-        if ticket_create_form.is_valid():
-            if request.user.is_authenticated:
-                ticket = ticket_create_form.save(commit=False)
-                ticket.user = request.user
-                ticket.save()
-            else:
-                ticket_create_form.save()
+    messages.success(request, "Ticket has been booked for %s" % (bus_route.name))
 
-            messages.info(request, "Ticket has been booked")
-
-            return redirect("tickets:ticket-details", ticket_create_form.instance.id)
-        else:
-            print(ticket_create_form.errors)
-
-    ticket_create_form = TicketForm()
-
-    context = {"ticket_create_form": ticket_create_form}
-    template_name = "tickets/ticket-create.html"
-
-    return render(request, template_name, context)
+    return redirect("tickets:bus-route-list")
 
 
 def ticket_details_view(request, id):

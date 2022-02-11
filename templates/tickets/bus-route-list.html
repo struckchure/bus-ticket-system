@@ -1,5 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% with use_action="true"  %}
 {% include 'components/bus-route-table.html' %}
+{% endwith %}
+<div class="fixed bottom-5 right-5 group">
+    <a href="{% url 'tickets:bus-route-create' %}">
+        <button class="p-2 rounded-full bg-blue-700 text-white w-fit h-fit">
+            <i class="icon add"></i>
+        </button>
+    </a>
+
+    {% comment %} <div
+        class="group-hover:bottom-5 fixed shadow-lg bottom-[-10%] transition duration-400 right-20 p-2 rounded-md bg-gray-400">
+        <label for="">Add New Bus Route</label>
+    </div> {% endcomment %}
+</div>
 {% endblock content %}

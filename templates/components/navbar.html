@@ -1,9 +1,26 @@
 {% load static %}
 
-<nav class="flex justify-between items-center bg-gradient-to-r from-[#00A3FF] to-[#4285F4] px-10 py-2">
+<nav
+    class="flex flex-col md:flex-row gap-3 justify-between items-center bg-gradient-to-r from-[#00A3FF] to-[#4285F4] px-10 py-2">
     <a href="/">
         <img src="{% static 'img/logo-1.svg' %}" alt="Logo" class="object-contain w-fit h-fit">
     </a>
+
+    <ul>
+        <li>
+            <a href="{% url 'tickets:bus-route-list' %}"
+                class="text-white text-md bg-[rgba(0,0,0,0.25)] hover:bg-[rgba(0,0,0,0.15)] rounded-md p-2">
+                Bus Routes
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'tickets:ticket-list' %}"
+                class="text-white text-md bg-[rgba(0,0,0,0.25)] hover:bg-[rgba(0,0,0,0.15)] rounded-md p-2">
+                Tickets
+            </a>
+        </li>
+    </ul>
 
     <div class="flex items-center justify-around gap-2">
         {% if user %}

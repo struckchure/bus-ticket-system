@@ -21,7 +21,7 @@ urlpatterns = [
     ),
     path("bus-route/<uuid:id>/delete/", bus_route_delete_view, name="bus-route-delete"),
     path("", ticket_list_view, name="ticket-list"),
-    path("book/", ticket_create_view, name="ticket-create"),
+    path("book/<uuid:bus_route_id>/", ticket_create_view, name="ticket-create"),
     path("<uuid:id>/details/", ticket_details_view, name="ticket-details"),
     path("<uuid:id>/delete/", ticket_delete_view, name="ticket-delete"),
 ]

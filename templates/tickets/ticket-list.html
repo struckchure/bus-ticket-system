@@ -5,12 +5,5 @@ Tickets
 {% endblock title %}
 
 {% block content %}
-{% for ticket in ticket_list %}
-<div>
-    <p>Route : {{ ticket.route.name }}</p>
-    <p>Code : {{ ticket.code }}</p>
-    <p>Status : {{ ticket.status }}</p>
-    <small>{{ ticket.created|timesince }} ago</small>
-</div>
-{% endfor %}
+{% include 'components/ticket-table.html' %}
 {% endblock content %}

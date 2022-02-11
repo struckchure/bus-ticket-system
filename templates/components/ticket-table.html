@@ -9,14 +9,21 @@
                 </th>
                 <th class="p-2 whitespace-nowrap">
                     <div class="font-semibold text-left">
+                        Code
+                    </div>
+                </th>
+                <th class="p-2 whitespace-nowrap">
+                    <div class="font-semibold text-left">
                         Route
                     </div>
                 </th>
+
                 <th class="p-2 whitespace-nowrap">
                     <div class="font-semibold text-left">
                         Departure
                     </div>
                 </th>
+
                 <th class="p-2 whitespace-nowrap">
                     <div class="font-semibold text-left">
                         Arrival
@@ -29,54 +36,36 @@
                     </div>
                 </th>
 
-                <th class="p-2 whitespace-nowrap">
-                    <div class="font-semibold text-left">
-                        Book
-                    </div>
-                </th>
-
-                {% if use_action %}
-                <th class="p-2 whitespace-nowrap w-5" colsan="2">
+                <th class="p-2 whitespace-nowrap" colspan="2">
                     <div class="font-semibold text-left">
                         Actions
                     </div>
                 </th>
-                {% endif %}
             </tr>
         </thead>
 
         <tbody class="text-sm divide-y divide-gray-100">
-            {% for bus_route in bus_route_list %}
+            {% for ticket in ticket_list %}
             <tr class="hover:bg-gray-200 cursor-pointer">
                 <td class="p-2 whitespace-nowrap w-fit">{{ forloop.counter }}</td>
-                <td class="p-2 whitespace-nowrap">{{ bus_route.name }}</td>
-                <td class="p-2 whitespace-nowrap">{{ bus_route.departure.name }}</td>
-                <td class="p-2 whitespace-nowrap">{{ bus_route.arrival.name }}</td>
+                <td class="p-2 whitespace-nowrap">{{ ticket.code }}</td>
+                <td class="p-2 whitespace-nowrap">{{ ticket.route.name }}</td>
+                <td class="p-2 whitespace-nowrap">{{ ticket.route.departure.name }}</td>
+                <td class="p-2 whitespace-nowrap">{{ ticket.route.arrival.name }}</td>
                 <td class="p-2 whitespace-nowrap">
-                    {% if bus_route.price %}
-                    &#8358; {{ bus_route.price }}
+                    {% if ticket.route.price %}
+                    &#8358; {{ ticket.route.price }}
                     {% else %}
                     Free
                     {% endif %}
                 </td>
-                <td>
-                    <a href="{% url 'tickets:ticket-create' bus_route.id %}"
-                        class="bg-blue-600 text-white text-sm py-1 px-2 rounded-md">book</a>
-                </td>
-                {% if use_action %}
                 <td class="p-2 whitespace-nowrap" colspan="2">
-                    <a href="{% url 'tickets:bus-route-details' bus_route.id %}">
-                        <button class=" rounded-md bg-blue-600 text-white py-1 px-2 text-sm">
-                            view
-                        </button>
-                    </a>
-                    <a href="{% url 'tickets:bus-route-delete' bus_route.id %}">
-                        <button class=" rounded-md bg-red-600 text-white py-1 px-2 text-sm">
+                    <a href="{% url 'tickets:ticket-delete' ticket.id %}">
+                        <button class="py-1 px-2 bg-red-600 rounded-md text-sm text-white">
                             delete
                         </button>
                     </a>
                 </td>
-                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
